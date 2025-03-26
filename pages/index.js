@@ -8,10 +8,7 @@ export default function Home() {
   const [loading, setLoading] = useState(false);
 
   const generateStory = async () => {
-    if (!name || !theme) {
-      alert("Por favor, completa el nombre y elige un tema.");
-      return;
-    }
+    if (!name || !theme) return alert("Rellena todos los campos");
 
     setLoading(true);
     const res = await axios.post("/api/story", { name, theme });
@@ -20,40 +17,52 @@ export default function Home() {
   };
 
   return (
-    <div className="max-w-xl mx-auto p-4">
-      <h1 className="text-2xl font-bold mb-4">Crea tu cuento sobre energías renovables</h1>
+    <div className="min-h-screen bg-gradient-to-br from-green-100 via-blue-100 to-purple-100 p-6">
+      <div className="max-w-3xl mx-auto text-center">
+        <h1 className="text-4xl font-bold text-green-800 mb-4">
+          Crea tu cuento sobre energías renovables
+        </h1>
+        <p className="text-lg text-gray-700 mb-8">
+          Historias personalizadas para niños con temas como energía solar, eólica, baterías, y más.
+        </p>
 
-      <input
-        value={name}
-        onChange={(e) => setName(e.target.value)}
-        placeholder="Nombre del niño o niña"
-        className="border p-2 w-full mb-2"
-      />
+        <div className="flex flex-col md:flex-row gap-4 justify-center items-center mb-6">
+          <input
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+            placeholder="Nombre del niño/a"
+            className="p-3 border rounded w-64"
+          />
+          <select
+            value={theme}
+            onChange={(e) => setTheme(e.target.value)}
+            className="p-3 border rounded w-64"
+          >
+            <option value="">Selecciona un tema</option>
+            <option value="energía solar">Energía solar</option>
+            <option value="energía eólica">Energía eólica</option>
+            <option value="almacenamiento con baterías">Baterías</option>
+            <option value="coches eléctricos">Coches eléctricos</option>
+            <option value="hibridación de fuentes">Hibridación</option>
+          </select>
+        </div>
 
-      <select
-        value={theme}
-        onChange={(e) => setTheme(e.target.value)}
-        className="border p-2 w-full mb-2"
-      >
-        <option value="">Elige un tema</option>
-        <option value="energía solar">Energía solar</option>
-        <option value="energía eólica">Energía eólica</option>
-        <option value="almacenamiento con baterías">Almacenamiento con baterías</option>
-        <option value="coches eléctricos">Coches eléctricos</option>
-        <option value="hibridación de fuentes">Hibridación de fuentes</option>
-        <option value="redes inteligentes">Redes inteligentes</option>
-        <option value="biomasa">Biomasa</option>
-      </select>
+        <button
+          onClick={generateStory}
+          className="bg-green-600 text-white px-6 py-3 rounded shadow hover:bg-green-700 transition"
+          disabled={loading}
+        >
+          {loading ? "Generando..." : "Crear cuento"}
+        </button>
 
-      <button
-        onClick={generateStory}
-        className="bg-blue-500 text-white px-4 py-2 rounded"
-        disabled={loading}
-      >
-        {loading ? "Generando..." : "Crear cuento"}
-      </button>
-
-      <div className="mt-4 whitespace-pre-wrap">{story}</div>
+        {story && (
+          <div className="bg-white rounded shadow p-6 mt-8 text-left whitespace-pre-wrap">
+            <h2 className="text-xl font-semibold mb-4">Tu cuento:</h2>
+            {story}
+          </div>
+        )}
+      </div>
     </div>
   );
 }
+
