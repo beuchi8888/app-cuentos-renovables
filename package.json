@@ -13,4 +13,9 @@
     "react-dom": "latest",
     "openai": "^4.0.0"
   }
+  "devDependencies": {
+  "tailwindcss": "^3.3.0",
+  "postcss": "^8.4.21",
+  "autoprefixer": "^10.4.13"
+}
 }
