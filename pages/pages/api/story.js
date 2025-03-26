@@ -5,7 +5,16 @@ const openai = new OpenAI({
 });
 
 export default async function handler(req, res) {
-  const { name, theme } = req.body;
+  // Solo aceptar POST
+  if (req.method !== 'POST') {
+    return res.status(405).json({ error: "Method Not Allowed" });
+  }
+
+  const { name, theme } = req.body || {};
+
+  if (!name || !theme) {
+    return res.status(400).json({ error: "Faltan datos: nombre o tema" });
+  }
 
   const prompt = `Escribe un cuento infantil para un niño llamado ${name}, relacionado con el tema de ${theme} dentro del mundo de las energías renovables. El cuento debe ser educativo, entretenido y fácil de entender. Usa lenguaje claro, ejemplos visuales y personajes que enseñen sobre tecnologías limpias. Máximo 500 palabras.`;
 
@@ -21,4 +30,3 @@ export default async function handler(req, res) {
     res.status(500).json({ error: error.message });
   }
 }
-
