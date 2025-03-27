@@ -21,7 +21,7 @@ export default async function handler(req, res) {
       return res.status(400).json({ error: "Faltan datos: nombre o tema" });
     }
 
-    const prompt = `Escribe un cuento infantil para un niño llamado ${name}, relacionado con el tema de ${theme} dentro del mundo de las energías renovables. El cuento debe ser educativo, entretenido y fácil de entender. Usa lenguaje claro, ejemplos visuales y personajes que enseñen sobre tecnologías limpias. Máximo 500 palabras.`;
+    const prompt = `Escribe un cuento infantil en español para un niño llamado ${name}, relacionado con el tema de ${theme} dentro del mundo de las energías renovables. El cuento debe ser educativo, entretenido y fácil de entender. Usa lenguaje claro, ejemplos visuales y personajes que enseñen sobre tecnologías limpias. Máximo 1000 palabras.`;
 
     const chatCompletion = await openai.chat.completions.create({
       model: "mistralai/mistral-7b-instruct", // modelo gratuito compatible
