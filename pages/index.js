@@ -104,8 +104,8 @@ export default function Home() {
         </button>
 
         {story && (
-          <div className="bg-white rounded shadow p-6 mt-8 text-left whitespace-pre-wrap text-gray-800">
-            <h2 className="text-xl font-semibold mb-4">Tu cuento:</h2>
+          <div className="bg-white rounded-xl shadow-lg p-6 mt-8 text-left text-lg leading-relaxed text-gray-800">
+            <h2 className="text-2xl font-bold text-green-700 mb-4">🧚 Tu cuento:</h2>
             {story}
           </div>
         )}
