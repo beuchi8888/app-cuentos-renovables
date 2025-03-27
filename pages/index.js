@@ -3,40 +3,65 @@ import axios from "axios";
 
 export default function Home() {
   const [name, setName] = useState("");
+  const [age, setAge] = useState("");
   const [theme, setTheme] = useState("");
+  const [companion, setCompanion] = useState("");
+  const [place, setPlace] = useState("");
   const [story, setStory] = useState("");
   const [loading, setLoading] = useState(false);
 
   const generateStory = async () => {
-    if (!name || !theme) return alert("Rellena todos los campos");
+    if (!name || !age || !theme || !companion || !place) {
+      alert("Rellena todos los campos por favor");
+      return;
+    }
 
     setLoading(true);
-    const res = await axios.post("/api/story", { name, theme });
-    setStory(res.data.story);
+    try {
+      const res = await axios.post("/api/story", {
+        name,
+        age,
+        theme,
+        companion,
+        place,
+      });
+      setStory(res.data.story);
+    } catch (err) {
+      setStory("❌ Error al generar el cuento.");
+    }
     setLoading(false);
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-green-100 via-blue-100 to-purple-100 p-6">
+    <div className="min-h-screen bg-gradient-to-br from-green-50 via-blue-50 to-white p-6">
       <div className="max-w-3xl mx-auto text-center">
         <h1 className="text-4xl font-bold text-green-800 mb-4">
           Crea tu cuento sobre energías renovables
         </h1>
         <p className="text-lg text-gray-700 mb-8">
-          Historias personalizadas para niños con temas como energía solar, eólica, baterías, y más.
+          Historias personalizadas según la edad, acompañante y lugar de aventura.
         </p>
 
-        <div className="flex flex-col md:flex-row gap-4 justify-center items-center mb-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
           <input
             value={name}
             onChange={(e) => setName(e.target.value)}
             placeholder="Nombre del niño/a"
-            className="p-3 border rounded w-64"
+            className="p-3 border rounded w-full"
           />
+          <input
+            value={age}
+            onChange={(e) => setAge(e.target.value)}
+            placeholder="Edad del niño/a"
+            className="p-3 border rounded w-full"
+            type="number"
+            min="1"
+          />
+
           <select
             value={theme}
             onChange={(e) => setTheme(e.target.value)}
-            className="p-3 border rounded w-64"
+            className="p-3 border rounded w-full"
           >
             <option value="">Selecciona un tema</option>
             <option value="energía solar">Energía solar</option>
@@ -44,6 +69,29 @@ export default function Home() {
             <option value="almacenamiento con baterías">Baterías</option>
             <option value="coches eléctricos">Coches eléctricos</option>
             <option value="hibridación de fuentes">Hibridación</option>
+          </select>
+
+          <select
+            value={companion}
+            onChange={(e) => setCompanion(e.target.value)}
+            className="p-3 border rounded w-full"
+          >
+            <option value="">Compañero de aventura</option>
+            <option value="un robot">Un robot</option>
+            <option value="una criatura mágica">Una criatura mágica</option>
+            <option value="un amigo">Un amigo</option>
+          </select>
+
+          <select
+            value={place}
+            onChange={(e) => setPlace(e.target.value)}
+            className="p-3 border rounded w-full"
+          >
+            <option value="">Lugar de la historia</option>
+            <option value="un bosque">Un bosque</option>
+            <option value="una isla">Una isla</option>
+            <option value="un colegio">Un colegio</option>
+            <option value="una ciudad futurista">Una ciudad futurista</option>
           </select>
         </div>
 
@@ -56,7 +104,7 @@ export default function Home() {
         </button>
 
         {story && (
-          <div className="bg-white rounded shadow p-6 mt-8 text-left whitespace-pre-wrap">
+          <div className="bg-white rounded shadow p-6 mt-8 text-left whitespace-pre-wrap text-gray-800">
             <h2 className="text-xl font-semibold mb-4">Tu cuento:</h2>
             {story}
           </div>
