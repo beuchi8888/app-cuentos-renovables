@@ -1,3 +1,9 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* Opcional: puedes añadir estilos personalizados */
+body {
+  @apply bg-gradient-to-br from-green-50 via-blue-50 to-white text-gray-800;
+}
+
