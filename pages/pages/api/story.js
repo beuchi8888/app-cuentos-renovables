@@ -1,11 +1,10 @@
 import OpenAI from "openai";
 
-// Usa la variable de entorno con la clave de OpenRouter
 const openai = new OpenAI({
-  apiKey: process.env.OPENROUTER_API_KEY,
-  baseURL: "https://openrouter.ai/api/v1", // importante
+  apiKey: process.env.OPENROUTER_API_KEY || process.env.OPENAI_API_KEY, // acepta ambas
+  baseURL: "https://openrouter.ai/api/v1",
   defaultHeaders: {
-    "HTTP-Referer": "https://tuapp.vercel.app", // reemplaza con tu dominio si quieres
+    "HTTP-Referer": "https://tuapp.vercel.app", // tu dominio o el de vercel
     "X-Title": "cuentos-renovables"
   }
 });
