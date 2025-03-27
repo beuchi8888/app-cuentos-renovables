@@ -1,10 +1,10 @@
 import OpenAI from "openai";
 
 const openai = new OpenAI({
-  apiKey: process.env.OPENROUTER_API_KEY || process.env.OPENAI_API_KEY, // acepta ambas
+  apiKey: process.env.OPENROUTER_API_KEY || process.env.OPENAI_API_KEY,
   baseURL: "https://openrouter.ai/api/v1",
   defaultHeaders: {
-    "HTTP-Referer": "https://tuapp.vercel.app", // tu dominio o el de vercel
+    "HTTP-Referer": "https://app-cuentos-renovables-xfo2.vercel.app", // pon aquí tu dominio real
     "X-Title": "cuentos-renovables"
   }
 });
@@ -15,24 +15,34 @@ export default async function handler(req, res) {
       return res.status(405).json({ error: "Method Not Allowed" });
     }
 
-    const { name, theme } = req.body || {};
+    // Recogemos todos los datos del cuerpo de la petición
+    const { name, theme, age, companion, place } = req.body || {};
 
     if (!name || !theme) {
       return res.status(400).json({ error: "Faltan datos: nombre o tema" });
     }
 
-    const prompt = `Escribe un cuento infantil en español para un niño llamado ${name}, relacionado con el tema de ${theme} dentro del mundo de las energías renovables. El cuento debe ser educativo, entretenido y fácil de entender. Usa lenguaje claro, ejemplos visuales y personajes que enseñen sobre tecnologías limpias. Máximo 1000 palabras.`;
+    const prompt = `
+Escribe un cuento infantil en español para un niño llamado ${name}, de ${age || "edad no especificada"} años. 
+El cuento debe tratar sobre el tema de ${theme} en el contexto de las energías renovables.
+La historia debe desarrollarse en ${place || "un lugar interesante"} y debe incluir como compañero de aventura a ${companion || "alguien especial"}.
+Haz que sea educativo, entretenido y adaptado a la edad del niño.
+Usa un lenguaje claro, personajes simpáticos y situaciones divertidas.
+Máximo 600 palabras.
+    `;
 
     const chatCompletion = await openai.chat.completions.create({
-      model: "mistralai/mistral-7b-instruct", // modelo gratuito compatible
+      model: "mistralai/mistral-7b-instruct",
       messages: [{ role: "user", content: prompt }],
       temperature: 0.8,
     });
 
     res.status(200).json({ story: chatCompletion.choices[0].message.content });
   } catch (error) {
+    console.error("Error generando cuento:", error);
     if (res?.status) {
       res.status(500).json({ error: error.message });
     }
   }
 }
+
