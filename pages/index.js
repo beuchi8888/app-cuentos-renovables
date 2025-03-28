@@ -33,7 +33,7 @@ export default function Home() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-green-50 via-blue-50 to-white p-6 flex flex-col justify-between">
+    <div className="min-h-screen bg-gradient-to-b from-sky-100 via-sky-200 to-sky-300 p-6 flex flex-col justify-between">
       <div className="max-w-3xl mx-auto text-center">
         <div className="text-5xl mb-2">🔋⚡🌞🌬️</div>
         <h1 className="text-4xl font-bold text-green-800 mb-4">
@@ -103,7 +103,7 @@ export default function Home() {
           className="bg-green-600 text-white px-6 py-3 rounded shadow hover:bg-green-700 transition"
           disabled={loading}
         >
-          {loading ? "Generando..." : "✨ Crear cuento"}
+          {loading ? "Generando..." : "✨ Crear cuento ✨"}
         </button>
 
         {story && (
@@ -115,11 +115,11 @@ export default function Home() {
       </div>
 
       {/* Footer */}
-      <footer className="mt-12 text-center text-sm text-gray-500">
+      <hr className="my-8 border-t border-gray-300" />
 
-        \\n
-        🌍 Creado por BRH © {new Date().getFullYear()}
-      </footer>
+      <footer className="text-center text-sm text-gray-500">
+      🌍 Creado por BRH © {new Date().getFullYear()}
+    </footer>
     </div>
   );
 }
