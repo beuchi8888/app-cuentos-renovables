@@ -33,9 +33,9 @@ export default function Home() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-green-50 via-blue-50 to-white p-6">
+    <div className="min-h-screen bg-gradient-to-br from-green-50 via-blue-50 to-white p-6 flex flex-col justify-between">
       <div className="max-w-3xl mx-auto text-center">
-        <div className="text-5xl mb-2">🔋⚡🌞🌱</div>
+        <div className="text-5xl mb-2">🔋⚡🌞🌬️</div>
         <h1 className="text-4xl font-bold text-green-800 mb-4">
           Crea tu cuento sobre energías renovables
         </h1>
@@ -70,6 +70,8 @@ export default function Home() {
             <option value="almacenamiento con baterías">🔋 Baterías</option>
             <option value="coches eléctricos">🚗⚡ Coches eléctricos</option>
             <option value="hibridación de fuentes">🔄 Hibridación</option>
+            <option value="energía de fusión">☀️ Energía de fusión</option>
+            <option value="energía de fisión">⚛️ Energía de fisión</option>
           </select>
 
           <select
@@ -111,6 +113,11 @@ export default function Home() {
           </div>
         )}
       </div>
+
+      {/* Footer */}
+      <footer className="mt-12 text-center text-sm text-gray-500">
+        🌍 Creado por BRH © {new Date().getFullYear()}
+      </footer>
     </div>
   );
 }
