@@ -116,6 +116,8 @@ export default function Home() {
 
       {/* Footer */}
       <footer className="mt-12 text-center text-sm text-gray-500">
+
+        
         🌍 Creado por BRH © {new Date().getFullYear()}
       </footer>
     </div>
