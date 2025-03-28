@@ -40,7 +40,7 @@ export default function Home() {
           Crea tu cuento sobre energías renovables
         </h1>
         <p className="text-lg text-gray-700 mb-8">
-          Historias personalizadas según la edad, acompañante y lugar de aventura.
+          Historias personalizadas sobre energías renovables.
         </p>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
