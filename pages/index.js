@@ -35,6 +35,7 @@ export default function Home() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-green-50 via-blue-50 to-white p-6">
       <div className="max-w-3xl mx-auto text-center">
+        <div className="text-5xl mb-2">🔋⚡🌞🌱</div>
         <h1 className="text-4xl font-bold text-green-800 mb-4">
           Crea tu cuento sobre energías renovables
         </h1>
@@ -46,13 +47,13 @@ export default function Home() {
           <input
             value={name}
             onChange={(e) => setName(e.target.value)}
-            placeholder="Nombre del niño/a"
+            placeholder="👦 Nombre del niño/a"
             className="p-3 border rounded w-full"
           />
           <input
             value={age}
             onChange={(e) => setAge(e.target.value)}
-            placeholder="Edad del niño/a"
+            placeholder="🎂 Edad del niño/a"
             className="p-3 border rounded w-full"
             type="number"
             min="1"
@@ -63,12 +64,12 @@ export default function Home() {
             onChange={(e) => setTheme(e.target.value)}
             className="p-3 border rounded w-full"
           >
-            <option value="">Selecciona un tema</option>
-            <option value="energía solar">Energía solar</option>
-            <option value="energía eólica">Energía eólica</option>
-            <option value="almacenamiento con baterías">Baterías</option>
-            <option value="coches eléctricos">Coches eléctricos</option>
-            <option value="hibridación de fuentes">Hibridación</option>
+            <option value="">💡 Selecciona un tema</option>
+            <option value="energía solar">🌞 Energía solar</option>
+            <option value="energía eólica">💨 Energía eólica</option>
+            <option value="almacenamiento con baterías">🔋 Baterías</option>
+            <option value="coches eléctricos">🚗⚡ Coches eléctricos</option>
+            <option value="hibridación de fuentes">🔄 Hibridación</option>
           </select>
 
           <select
@@ -76,22 +77,22 @@ export default function Home() {
             onChange={(e) => setCompanion(e.target.value)}
             className="p-3 border rounded w-full"
           >
-            <option value="">Compañero de aventura</option>
-            <option value="un robot">Un robot</option>
-            <option value="una criatura mágica">Una criatura mágica</option>
-            <option value="un amigo">Un amigo</option>
+            <option value="">🧍‍♂️ Compañero de aventura</option>
+            <option value="un robot">🤖 Un robot</option>
+            <option value="una criatura mágica">🧚‍♀️ Criatura mágica</option>
+            <option value="un amigo">👫 Un amigo</option>
           </select>
 
           <select
             value={place}
             onChange={(e) => setPlace(e.target.value)}
-            className="p-3 border rounded w-full"
+            className="p-3 border rounded w-full md:col-span-2"
           >
-            <option value="">Lugar de la historia</option>
-            <option value="un bosque">Un bosque</option>
-            <option value="una isla">Una isla</option>
-            <option value="un colegio">Un colegio</option>
-            <option value="una ciudad futurista">Una ciudad futurista</option>
+            <option value="">🌍 Lugar de la historia</option>
+            <option value="un bosque">🌲 Un bosque</option>
+            <option value="una isla">🏝️ Una isla</option>
+            <option value="un colegio">🏫 Un colegio</option>
+            <option value="una ciudad futurista">🏙️ Una ciudad futurista</option>
           </select>
         </div>
 
@@ -100,12 +101,12 @@ export default function Home() {
           className="bg-green-600 text-white px-6 py-3 rounded shadow hover:bg-green-700 transition"
           disabled={loading}
         >
-          {loading ? "Generando..." : "Crear cuento"}
+          {loading ? "Generando..." : "✨ Crear cuento"}
         </button>
 
         {story && (
-          <div className="bg-white rounded-xl shadow-lg p-6 mt-8 text-left text-lg leading-relaxed text-gray-800">
-            <h2 className="text-2xl font-bold text-green-700 mb-4">🧚 Tu cuento:</h2>
+          <div className="bg-white rounded-xl shadow-lg p-6 mt-8 text-left text-lg leading-relaxed text-gray-800 whitespace-pre-line">
+            <h2 className="text-2xl font-bold text-green-700 mb-4">📖 Tu cuento:</h2>
             {story}
           </div>
         )}
