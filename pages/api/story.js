@@ -34,11 +34,11 @@ export default async function handler(req, res) {
       - Un desenlace con una moraleja que enseñe un valor positivo (como cuidar el planeta, trabajar en equipo o ser curioso para tener un aprendizaje mayor)
 
       🧠 Introduce, de forma sencilla, cómo funciona la fuente de energía correspondiente.
-      🎨 Utiliza emojis adecuados a lo largo del cuento para hacerlo más visual.
+      🎨 Utiliza emojis adecuados a lo largo del cuento para hacerlo más visual, pero tampoco demasiados.
       ✍️ Escribe en párrafos separados, usando saltos de línea reales para cada uno (doble salto de línea: \\n\\n).
       ❌ No añadas encabezados tipo "1. Introducción", ni títulos, ni explicaciones externas. Solo el cuento narrativo.
 
-      Límite: 800 palabras.
+      Límite: 1000 palabras.
   `;
 
     const chatCompletion = await openai.chat.completions.create({
