@@ -42,7 +42,7 @@ export default async function handler(req, res) {
   `;
 
     const chatCompletion = await openai.chat.completions.create({
-      model: "meta-llama/llama-2-13b-chat",
+      model: "mistralai/mixtral-8x7b-instruct",
       messages: [{ role: "user", content: prompt }],
       temperature: 0.8,
     });
