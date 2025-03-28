@@ -36,7 +36,7 @@ export default async function handler(req, res) {
       🧠 Introduce, de forma sencilla, cómo funciona la fuente de energía correspondiente.
       🎨 Utiliza emojis adecuados a lo largo del cuento para hacerlo más visual.
       ✍️ Escribe en párrafos separados, usando saltos de línea reales para cada uno (doble salto de línea: \\n\\n).
-      🚫 No incluyas títulos, numeraciones, ni explicaciones externas (solo el cuento).
+      ❌ No añadas encabezados tipo "1. Introducción", ni títulos, ni explicaciones externas. Solo el cuento narrativo.
 
       Límite: 800 palabras.
   `;
