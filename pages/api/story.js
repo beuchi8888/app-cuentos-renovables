@@ -23,27 +23,26 @@ export default async function handler(req, res) {
     }
 
     const prompt = `
-      Escribe un cuento infantil en español para un niño llamado ${name}, de ${age || "edad no especificada"} años.
+         Escribe un cuento infantil original y en español para un niño llamado ${name}, de ${age} años.
 
-      El cuento debe tratar sobre el tema de ${theme} en el contexto de las energías renovables.
-      La historia debe desarrollarse en ${place || "un lugar interesante"} y debe incluir como compañero de aventura a ${companion || "alguien especial"}.
+          El cuento debe estar inspirado en el tema de "${theme}", relacionado con las energías renovables.
+          Debe desarrollarse en ${place} y contar con un compañero de aventuras que sea ${companion}.
 
-      🔹 Estructura el cuento en párrafos bien separados:
-      1. Una introducción breve y mágica para captar la atención.
-      2. Un desarrollo donde los personajes aprenden o usan la fuente de energía elegida.
-      3. Un final con una pequeña reflexión o moraleja.
+          El cuento debe tener:
+          - Una introducción mágica que despierte la curiosidad
+          - Un desarrollo en el que los personajes aprendan sobre la fuente de energía de forma divertida y comprensible
+          - Un desenlace con una moraleja que enseñe un valor positivo (como cuidar el planeta, trabajar en equipo o ser curioso)
 
-      🧠 Explica brevemente cómo funciona esa fuente de energía (adaptado a la edad).
-      🎓 Incluye un mensaje o valor positivo al final del cuento, como la importancia de cuidar el planeta, el trabajo en equipo, la curiosidad, la empatía o el respeto por la naturaleza.
+      🧠 Introduce, de forma sencilla, cómo funciona la fuente de energía correspondiente.
+      🎨 Utiliza emojis adecuados a lo largo del cuento para hacerlo más visual.
+      ✍️ Escribe en párrafos separados, usando saltos de línea reales para cada uno (\n\n).
+      🚫 No incluyas títulos, numeraciones, ni explicaciones externas (solo el cuento).
 
-      ✨ Usa un lenguaje claro, visual, educativo y entretenido.
-      🤩 Añade emojis en los momentos clave para hacerlo más atractivo para el niño.
-
-      Máximo 600 palabras.
-      `;
+      Límite: 800 palabras.
+  `;
 
     const chatCompletion = await openai.chat.completions.create({
-      model: "mistralai/mistral-7b-instruct",
+      model: "meta-llama/llama-2-13b-chat",
       messages: [{ role: "user", content: prompt }],
       temperature: 0.8,
     });
