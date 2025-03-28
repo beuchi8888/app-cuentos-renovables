@@ -31,7 +31,7 @@ export default async function handler(req, res) {
       El cuento debe tener:
       - Una introducción mágica que despierte la curiosidad
       - Un desarrollo en el que los personajes aprendan sobre la fuente de energía de forma divertida y comprensible
-      - Un desenlace con una moraleja que enseñe un valor positivo (como cuidar el planeta, trabajar en equipo o ser curioso)
+      - Un desenlace con una moraleja que enseñe un valor positivo (como cuidar el planeta, trabajar en equipo o ser curioso para tener un aprendizaje mayor)
 
       🧠 Introduce, de forma sencilla, cómo funciona la fuente de energía correspondiente.
       🎨 Utiliza emojis adecuados a lo largo del cuento para hacerlo más visual.
