@@ -47,7 +47,7 @@ export default function Home() {
           <input
             value={name}
             onChange={(e) => setName(e.target.value)}
-            placeholder="👦 Nombre del niño/a"
+            placeholder="👦 Nombre del niño/a 👧"
             className="p-3 border rounded w-full"
           />
           <input
@@ -79,10 +79,10 @@ export default function Home() {
             onChange={(e) => setCompanion(e.target.value)}
             className="p-3 border rounded w-full"
           >
-            <option value="">🧍‍♂️ Compañero de aventura</option>
+            <option value="">🧍‍♂️ Compañero/a de aventura</option>
             <option value="un robot">🤖 Un robot</option>
             <option value="una criatura mágica">🧚‍♀️ Criatura mágica</option>
-            <option value="un amigo">👫 Un amigo</option>
+            <option value="un amigo">👫 Un amigo/a</option>
           </select>
 
           <select
@@ -117,7 +117,7 @@ export default function Home() {
       {/* Footer */}
       <footer className="mt-12 text-center text-sm text-gray-500">
 
-        
+        \\n
         🌍 Creado por BRH © {new Date().getFullYear()}
       </footer>
     </div>
