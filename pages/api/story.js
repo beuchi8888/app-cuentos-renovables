@@ -22,14 +22,25 @@ export default async function handler(req, res) {
       return res.status(400).json({ error: "Faltan datos: nombre o tema" });
     }
 
-    const prompt = `
-Escribe un cuento infantil en español para un niño llamado ${name}, de ${age || "edad no especificada"} años. 
-El cuento debe tratar sobre el tema de ${theme} en el contexto de las energías renovables.
-La historia debe desarrollarse en ${place || "un lugar interesante"} y debe incluir como compañero de aventura a ${companion || "alguien especial"}.
-Haz que sea educativo, entretenido y adaptado a la edad del niño.
-Usa un lenguaje claro, personajes simpáticos y situaciones divertidas.
-Máximo 600 palabras.
-    `;
+  const prompt = `
+    Escribe un cuento infantil en español para un niño llamado ${name}, de ${age || "edad no especificada"} años. 
+    El cuento debe tratar sobre el tema de ${theme} dentro del mundo de las energías renovables.
+
+    La historia debe desarrollarse en ${place || "un lugar interesante"} y debe incluir como compañero de aventura a ${companion || "alguien especial"}.
+
+    Redacta el cuento en **párrafos separados** (con saltos de línea entre ellos), como si fuera un cuento de un libro infantil.
+
+    Haz que sea:
+    - Educativo y entretenido
+    - Adaptado a la edad del niño
+    - Con personajes simpáticos y situaciones divertidas
+    - Usando lenguaje claro y accesible
+    - Que explique el funcionamiento principal de cada fuente de energía renovable adaptado a la edad del niño
+
+    Incluye **emojis** donde tenga sentido para hacerlo visual y atractivo.
+
+    Máximo 600 palabras.
+  `;
 
     const chatCompletion = await openai.chat.completions.create({
       model: "mistralai/mistral-7b-instruct",
