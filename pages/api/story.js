@@ -25,21 +25,24 @@ export default async function handler(req, res) {
     const prompt = `
       Escribe un cuento infantil original y en español para un niño llamado ${name}, de ${age} años.
 
-      El cuento debe estar inspirado en el tema de "${theme}", relacionado con las energías renovables.
+      El cuento debe estar inspirado en el tema de "${theme}", que es una fuente de energía renovable. 
       Debe desarrollarse en ${place} y contar con un compañero de aventuras que sea ${companion}.
 
+      🔍 El objetivo es que el niño o niña comprenda **cómo funciona la fuente de energía "${theme}"** de forma sencilla, clara y adaptada a su edad (${age} años). 
+      Debes **explicar los conceptos básicos y el funcionamiento** de esta energía (por ejemplo: cómo se produce, de dónde proviene, para qué sirve, que elementos utiliza para conseguir electricidad, etc.), usando un lenguaje comprensible, analogías en relación a la edad (${age} años) y ejemplos cercanos a su mundo. 
+      Evita tecnicismos innecesarios, pero no simplifiques en exceso: el niño debe poder **entender correctamente los términos clave** relacionados con esta fuente de energía.
+
       El cuento debe tener:
-      - Una introducción mágica que despierte la curiosidad
-      - Un desarrollo en el que los personajes aprendan sobre la fuente de energía de forma divertida y comprensible
-      - Un desenlace con una moraleja que enseñe un valor positivo (como cuidar el planeta, trabajar en equipo o ser curioso para tener un aprendizaje mayor)
+      - 🪄 Una introducción mágica que despierte la curiosidad del niño y lo invite a la aventura
+      - 🚀 Un desarrollo donde los personajes vivan una experiencia divertida y educativa en la que **aprendan cómo funciona la fuente de energía**, con explicaciones naturales dentro de la historia
+      - 🌱 Un desenlace con una **moraleja** que transmita un valor positivo, como cuidar el planeta, la curiosidad, el trabajo en equipo o la perseverancia, la importancia de aprender y ser buenas personas, etc.
 
-      🧠 Introduce, de forma sencilla, cómo funciona la fuente de energía correspondiente.
-      🎨 Utiliza emojis adecuados a lo largo del cuento para hacerlo más visual, pero tampoco demasiados.
-      ✍️ Escribe en párrafos separados, usando saltos de línea reales para cada uno (doble salto de línea: \\n\\n).
-      ❌ No añadas encabezados tipo "1. Introducción", ni títulos, ni explicaciones externas. Solo el cuento narrativo.
+      🎨 Usa algunos emojis apropiados para hacerlo más visual, pero sin abusar.
+      ✍️ Escribe el cuento con párrafos separados usando saltos de línea dobles (\\n\\n). 
+      ❌ No añadas encabezados como “Introducción” o “Desenlace”, ni títulos o explicaciones externas. Solo el cuento narrativo.
 
-      Límite: 1000 palabras.
-  `;
+      📏 Límite: máximo 1000 palabras.
+      `;
 
     const chatCompletion = await openai.chat.completions.create({
       model: "mistralai/mixtral-8x7b-instruct",
