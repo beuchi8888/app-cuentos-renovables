@@ -22,27 +22,39 @@ export default async function handler(req, res) {
       return res.status(400).json({ error: "Faltan datos: nombre o tema" });
     }
 
+    
     const prompt = `
-      Escribe un cuento infantil original y en español para un niño llamado ${name}, de ${age} años.
+      ✨ ¡Escribe un cuento infantil completamente original y en español para un niño llamado ${name}, de ${age} años! ✨
 
-      El cuento debe estar inspirado en el tema de "${theme}", que es una fuente de energía renovable. 
-      Debe desarrollarse en ${place} y contar con un compañero de aventuras que sea ${companion}.
+      🌟 Este cuento debe estar inspirado en el tema de "${theme}", una fuente de energía renovable. 
+      🌍 La historia se desarrollará en ${place} y contará con un compañero de aventuras que sea ${companion}. 
 
-      🔍 El objetivo es que el niño o niña comprenda **cómo funciona la fuente de energía "${theme}"** de forma sencilla, clara y adaptada a su edad (${age} años). 
-      Debes **explicar los conceptos básicos y el funcionamiento** de esta energía (por ejemplo: cómo se produce, de dónde proviene, para qué sirve, que elementos utiliza para conseguir electricidad, etc.), usando un lenguaje comprensible, analogías en relación a la edad (${age} años) y ejemplos cercanos a su mundo. 
-      Evita tecnicismos innecesarios, pero no simplifiques en exceso: el niño debe poder **entender correctamente los términos clave** relacionados con esta fuente de energía.
+      💡 **Objetivo:** Ayuda al niño o niña a **comprender de forma sencilla y clara cómo funciona la fuente de energía "${theme}"**, adaptada a su edad (${age} años). 
+      Debes incluir explicaciones naturales dentro de la historia para que entienda:
+      - De dónde proviene la energía.
+      - Cómo se produce.
+      - Para qué sirve.
+      - Qué elementos se utilizan para generar electricidad.
 
-      El cuento debe tener:
-      - 🪄 Una introducción mágica que despierte la curiosidad del niño y lo invite a la aventura
-      - 🚀 Un desarrollo donde los personajes vivan una experiencia divertida y educativa en la que **aprendan cómo funciona la fuente de energía**, con explicaciones naturales dentro de la historia
-      - 🌱 Un desenlace con una **moraleja** que transmita un valor positivo, como cuidar el planeta, la curiosidad, el trabajo en equipo o la perseverancia, la importancia de aprender y ser buenas personas, etc.
+      🔑 Usa un lenguaje accesible y creativo, incorporando analogías que conecten con el mundo del niño (${age} años). Evita tecnicismos innecesarios, pero no simplifiques al punto de omitir conceptos clave.
 
-      🎨 Usa algunos emojis apropiados para hacerlo más visual, pero sin abusar.
-      ✍️ Escribe el cuento con párrafos separados usando saltos de línea dobles (\\n\\n). 
-      ❌ No añadas encabezados como “Introducción” o “Desenlace”, ni títulos o explicaciones externas. Solo el cuento narrativo.
+      El cuento debe incluir:
+      1. 🪄 **Una introducción mágica** que despierte la curiosidad y lo lleve a la aventura.
+      2. 🚀 **Un desarrollo emocionante** donde los personajes vivan experiencias divertidas y educativas mientras aprenden sobre la energía renovable.
+      3. 🌱 **Un desenlace con una moraleja positiva**, transmitiendo valores como:
+       - Cuidar el planeta.
+       - Fomentar la curiosidad.
+       - Trabajar en equipo y la amistad.
+       - Perseverar y aprender con entusiasmo.
 
-      📏 Límite: máximo 1000 palabras.
-      `;
+      📝 **Formato:**
+        - Utiliza párrafos separados con saltos de línea dobles para una lectura más fluida.
+        - Añade algunos emojis 🐦🌟 para hacer el cuento más visual, pero sin excederte. 
+        - Sin títulos ni secciones como “Introducción” o “Desenlace”: solo el cuento narrativo.
+
+      📏 **Extensión máxima:** 1000 palabras. 
+
+        ¡Hazlo mágico, educativo y divertido! 🎉`;
 
     const chatCompletion = await openai.chat.completions.create({
       model: "mistralai/mixtral-8x7b-instruct",
