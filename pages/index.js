@@ -64,7 +64,7 @@ export default function Home() {
             onChange={(e) => setTheme(e.target.value)}
             className="p-3 border rounded w-full"
           >
-            <option value="">💡 Selecciona un tema</option>
+            <option value="" disabled hidden>💡 Selecciona un tema</option>
             <option value="energía solar">🌞 Energía solar</option>
             <option value="energía eólica">💨 Energía eólica</option>
             <option value="almacenamiento con baterías">🔋 Baterías</option>
@@ -79,10 +79,13 @@ export default function Home() {
             onChange={(e) => setCompanion(e.target.value)}
             className="p-3 border rounded w-full"
           >
-            <option value="">🧍‍♂️ Compañero/a de aventura</option>
+            <option value="" disabled hidden>🧍‍♂️ Compañero/a de aventura</option>
             <option value="un robot">🤖 Un robot</option>
             <option value="una criatura mágica">🧚‍♀️ Criatura mágica</option>
             <option value="un amigo">👫 Un amigo/a</option>
+            <option value="toda mi clase">🏫 Toda mi clase</option>
+            <option value="mi mascota">🐶 Mi mascota</option>
+            <option value="una científica ingeniosa">🧪 Una científica ingeniosa</option>
           </select>
 
           <select
@@ -90,11 +93,14 @@ export default function Home() {
             onChange={(e) => setPlace(e.target.value)}
             className="p-3 border rounded w-full md:col-span-2"
           >
-            <option value="">🌍 Lugar de la historia</option>
+            <option value="" disabled hidden>🌍 Lugar de la historia</option>
             <option value="un bosque">🌲 Un bosque</option>
             <option value="una isla">🏝️ Una isla</option>
             <option value="un colegio">🏫 Un colegio</option>
-            <option value="una ciudad futurista">🏙️ Una ciudad futurista</option>
+            <option value="un desierto">🏜️ Un desierto</option>
+            <option value="mi barrio">🏡 Mi barrio</option>
+            <option value="mi ciudad">🏘️ Mi ciudad</option>
+           
           </select>
         </div>
 
